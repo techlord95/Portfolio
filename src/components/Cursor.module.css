@@ -1,0 +1,44 @@
+
+/* Hide default cursor */
+html, body {
+  cursor: none;
+}
+
+.cursorTrail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.trailPath {
+    fill: none;
+    stroke: var(--pointer-color);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 5px var(--pointer-color));
+}
+
+.cursorDot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--pointer-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* Hide custom cursor on touch devices and restore default */
+@media (pointer: coarse) {
+    html, body {
+        cursor: auto;
+    }
+    .cursorTrail, .cursorDot {
+        display: none !important;
+    }
+}

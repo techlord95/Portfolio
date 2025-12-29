@@ -1,0 +1,121 @@
+.gameContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #202020;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive, sans-serif; /* Fallback to standard */
+  color: #fff; /* Static color for game section */
+}
+
+.canvas {
+  background: #5c94fc;
+  border: 4px solid #fff;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  width: 95%; /* Use more width on mobile */
+  max-width: 800px;
+  height: auto;
+  image-rendering: pixelated; 
+  aspect-ratio: 16/9;
+}
+
+.uiLayer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  color: #fff;
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #000;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.startScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 3rem;
+  border: 4px solid #fff;
+  text-align: center;
+  z-index: 10;
+}
+
+.startBtn {
+  background: #E52521;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+  transition: transform 0.1s;
+}
+
+.startBtn:active {
+  transform: scale(0.95);
+}
+
+.touchControls {
+  display: none;
+  position: absolute;
+  bottom: 80px; /* Moved up to avoid overlap with settings circular button */
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+@media (pointer: coarse) {
+  .touchControls {
+    display: flex;
+  }
+}
+
+.dpad {
+  display: flex;
+  gap: 15px; /* Slightly tighter gap */
+  pointer-events: auto;
+}
+
+.controlBtn {
+    width: 70px; /* Slightly larger for Jump text */
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    touch-action: manipulation;
+    position: relative; /* For tooltips if needed */
+}
+
+.actionBtn {
+    width: 80px; /* Wider for text */
+    height: 80px;
+    background: rgba(255, 60, 60, 0.6);
+    pointer-events: auto;
+    margin-right: 10px;
+    font-size: 1rem; /* Smaller font for JUMP text */
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.controlBtn:active {
+    background: rgba(255, 255, 255, 0.5);
+}
