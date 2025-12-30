@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Cursor from "@/components/Cursor";
@@ -33,6 +34,7 @@ export default function RootLayout({
             <ThemeEditor />
             {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
