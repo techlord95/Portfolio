@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './GameSection.module.css';
+import ResumeView from './ResumeView';
 
 // --- Constants & Types ---
 const TILE_SIZE = 32;
@@ -660,7 +661,7 @@ export default function GameSection() {
                 <h2 style={{ color: '#0f0', fontSize: '2rem', marginBottom: '1rem', textShadow: '0 0 10px #0f0' }}>CONGRATULATIONS!</h2>
                 <p style={{ color: '#fff', marginBottom: '1rem' }}>You've unlocked the Resume!</p>
                 <div style={{ width: '100%', height: '80%', background: '#fff' }}>
-                    <iframe src="/resume.pdf" width="100%" height="100%" style={{ border: 'none' }}></iframe>
+                    <ResumeView />
                 </div>
                 <button className={styles.startBtn} onClick={() => { setGameWon(false); setIsPlaying(true); initGame(); }} style={{ marginTop: '1rem' }}>
                     PLAY AGAIN

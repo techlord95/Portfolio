@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
 import styles from './Hero.module.css';
+import ResumeView from './ResumeView';
 
 export default function Hero() {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
@@ -138,7 +139,7 @@ export default function Hero() {
                    <h2 className={styles.winTitle}>CONGRATULATIONS!</h2>
                    <p className={styles.winText}>You've unlocked the Resume!</p>
                    <div className={styles.resumeFrameContainer}>
-                       <iframe src="/resume.pdf" width="100%" height="100%" style={{ border: 'none' }}></iframe>
+                       <ResumeView />
                    </div>
                    <div className={styles.btnGroup}>
                         <button className={`${styles.btnGame} ${styles.btnClose}`} onClick={() => {setShowResume(false); setIsGiftOpen(false); }}>
