@@ -1,16 +1,27 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './ResumeView.module.css';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaDownload } from 'react-icons/fa';
+import { useReactToPrint } from 'react-to-print';
 
 export default function ResumeView() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  
+  const handlePrint = useReactToPrint({
+    contentRef: contentRef,
+    documentTitle: 'Srijan_Ramnani_Resume',
+  });
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={contentRef}>
       <header className={styles.header}>
         <div>
           <h1 className={styles.title}>Srijan Ramnani</h1>
           <div className={styles.socials}>
+            <button onClick={() => handlePrint()} className={styles.downloadButton}>
+              <FaDownload /> Download PDF
+            </button>
             <a 
               href="https://linkedin.com/in/srijanramnani15/" 
               target="_blank" 
@@ -96,7 +107,7 @@ export default function ResumeView() {
         <div className={styles.item}>
           <div className={styles.itemHeader}>
             <span className={styles.role}>Claim Verification System For Insolvency Resolution Professionals</span>
-            <a href="https://github.com/techlord95/Claim-Verification-Resolution-Professional" className={styles.projectLink}>Github</a>
+            <a href="https://github.com/techlord95/Claim-Verification-Resolution-Professional" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>Github</a>
           </div>
           <div className={styles.tags}>
             <span className={styles.tag}>GenAI</span>
@@ -116,7 +127,7 @@ export default function ResumeView() {
         <div className={styles.item}>
           <div className={styles.itemHeader}>
             <span className={styles.role}>Data Analysis GenAI Excel Chatbot</span>
-             <a href="https://github.com/techlord95/Data-Analysis-AI-Excel-Chatbot" className={styles.projectLink}>Github</a>
+             <a href="https://github.com/techlord95/Data-Analysis-AI-Excel-Chatbot" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>Github</a>
           </div>
           <div className={styles.tags}>
             <span className={styles.tag}>Autogen</span>
@@ -134,7 +145,7 @@ export default function ResumeView() {
          <div className={styles.item}>
           <div className={styles.itemHeader}>
             <span className={styles.role}>E-Commerce Sentiment Analysis</span>
-             <a href="https://github.com/techlord95/Amazon-Sentiment-Analysis" className={styles.projectLink}>Github</a>
+             <a href="https://github.com/techlord95/Amazon-Sentiment-Analysis" target="_blank" rel="noopener noreferrer" className={styles.projectLink}>Github</a>
           </div>
           <div className={styles.tags}>
             <span className={styles.tag}>Python</span>

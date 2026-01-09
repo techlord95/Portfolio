@@ -47,6 +47,31 @@
   color: var(--primary-color, #4f46e5);
 }
 
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color, #4f46e5);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.downloadButton:hover {
+  background-color: #4338ca;
+}
+
+@media print {
+  .downloadButton {
+    display: none !important;
+  }
+}
+
 .section {
   margin-bottom: 1.5rem;
 }
