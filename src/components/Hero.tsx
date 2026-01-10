@@ -5,12 +5,15 @@ import { motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
 import styles from './Hero.module.css';
 import ResumeView from './ResumeView';
+import ResumeChatbot from './ResumeChatbot';
+import { useChat } from '../context/ChatContext';
 
 export default function Hero() {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [particles, setParticles] = useState<{x: number, y: number, color: string, vx: number, vy: number}[]>([]);
+  const { setIsOpen } = useChat();
 
   const handleGiftClick = () => {
     if (isGiftOpen) return;
@@ -87,33 +90,40 @@ export default function Hero() {
 
       {/* 3D Gift Box */}
       {!showResume && !showDialog && (
-        <div 
-            className={styles.giftContainer} 
-            onClick={handleGiftClick}
-            style={{ 
-                opacity: isGiftOpen ? 0 : 1, 
-                transition: 'opacity 0.5s',
-                pointerEvents: isGiftOpen ? 'none' : 'auto'
-            }}
-        >
-            <div className={styles.giftBox}>
-                <div className={`${styles.face} ${styles.front}`}></div>
-                <div className={`${styles.face} ${styles.back}`}></div>
-                <div className={`${styles.face} ${styles.right}`}></div>
-                <div className={`${styles.face} ${styles.left}`}></div>
-                <div className={`${styles.face} ${styles.bottom}`}></div>
-                
-                {/* Lid */}
-                <div className={styles.lidTop} style={{ 
-                    transform: isGiftOpen 
-                        ? 'translateY(-60px) rotateX(120deg) translateZ(10px)' 
-                        : 'translateY(0) rotateX(90deg) translateZ(50px)',
-                    transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-                }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', top: '50%', right: '10%', transform: 'translateY(-50%)', zIndex: 50 }}>
+            <div 
+                className={styles.giftContainer} 
+                onClick={handleGiftClick}
+                style={{ 
+                    position: 'relative',
+                    opacity: isGiftOpen ? 0 : 1, 
+                    transition: 'opacity 0.5s',
+                    pointerEvents: isGiftOpen ? 'none' : 'auto',
+                    marginBottom: '1rem'
+                }}
+            >
+                <div className={styles.giftBox}>
+                    <div className={`${styles.face} ${styles.front}`}></div>
+                    <div className={`${styles.face} ${styles.back}`}></div>
+                    <div className={`${styles.face} ${styles.right}`}></div>
+                    <div className={`${styles.face} ${styles.left}`}></div>
+                    <div className={`${styles.face} ${styles.bottom}`}></div>
+                    
+                    {/* Lid */}
+                    <div className={styles.lidTop} style={{ 
+                        transform: isGiftOpen 
+                            ? 'translateY(-60px) rotateX(120deg) translateZ(10px)' 
+                            : 'translateY(0) rotateX(90deg) translateZ(50px)',
+                        transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                    }}>
+                    </div>
                 </div>
             </div>
         </div>
       )}
+
+      {/* Render Chatbot Always */}
+      <ResumeChatbot />
 
       {/* Initial Congratulations Dialog */}
       {showDialog && (

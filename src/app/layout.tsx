@@ -5,6 +5,7 @@ import "./globals.css";
 import Cursor from "@/components/Cursor";
 import { ThemeProvider } from "@/components/ThemeContext";
 import ThemeEditor from "@/components/ThemeEditor";
+import { ChatProvider } from "@/context/ChatContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -102,11 +103,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ThemeProvider>
-            <Cursor />
-            <ThemeEditor />
-            {children}
-        </ThemeProvider>
+        <ChatProvider>
+          <ThemeProvider>
+              <Cursor />
+              <ThemeEditor />
+              {children}
+          </ThemeProvider>
+        </ChatProvider>
         <Analytics />
       </body>
     </html>

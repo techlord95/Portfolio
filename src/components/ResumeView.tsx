@@ -171,8 +171,6 @@ export default function ResumeView() {
     </ul>
   </div>
 </section>
-
-
     </div>
   );
 }
