@@ -355,3 +355,21 @@
 .btnPrimary:hover { transform: scale(1.05); background: #ffe44d; }
 .btnSecondary { background: transparent; border: 2px solid #fff; color: #fff; }
 .btnSecondary:hover { background: rgba(255,255,255,0.1); }
+
+.giftText {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  pointer-events: none;
+  animation: pulseText 2s infinite;
+  max-width: 150px;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}

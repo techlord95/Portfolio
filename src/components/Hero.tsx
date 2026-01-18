@@ -10,7 +10,6 @@ import { useChat } from '../context/ChatContext';
 
 export default function Hero() {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [particles, setParticles] = useState<{x: number, y: number, color: string, vx: number, vy: number}[]>([]);
   const { setIsOpen } = useChat();
@@ -20,7 +19,7 @@ export default function Hero() {
     setIsGiftOpen(true);
     triggerConfetti();
     setTimeout(() => {
-        setShowDialog(true);
+        setShowResume(true);
     }, 1000);
   };
 
@@ -53,19 +52,6 @@ export default function Hero() {
       }
   }, [particles]);
 
-  const handleHardWay = () => {
-      setShowDialog(false);
-      const gameSection = document.getElementById('game-section');
-      if (gameSection) {
-          gameSection.scrollIntoView({ behavior: 'smooth' });
-      }
-  };
-
-  const handleEasyWay = () => {
-      setShowDialog(false);
-      setShowResume(true);
-  };
-
   return (
     <section className={styles.hero}>
       {/* Background Scenery REMOVED */}
@@ -89,8 +75,11 @@ export default function Hero() {
 
 
       {/* 3D Gift Box */}
-      {!showResume && !showDialog && (
+      {!showResume && (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'absolute', top: '50%', right: '10%', transform: 'translateY(-50%)', zIndex: 50 }}>
+            <div className={styles.giftText}>
+                Unlock resume early by clicking here
+            </div>
             <div 
                 className={styles.giftContainer} 
                 onClick={handleGiftClick}
@@ -124,23 +113,6 @@ export default function Hero() {
 
       {/* Render Chatbot Always */}
       <ResumeChatbot />
-
-      {/* Initial Congratulations Dialog */}
-      {showDialog && (
-          <div className={styles.modalOverlay}>
-              <div className={styles.modalContent}>
-                  <h2 className={styles.modalTitle}>🎉 Congratulations! 🎉</h2>
-                  <p className={styles.modalText}>
-                      You've unlocked the resume early! <br/>
-                      Do you want to try unlocking it the <b>harder way</b> (Mario Game)?
-                  </p>
-                  <div className={styles.buttonGroup}>
-                      <button className={styles.btnPrimary} onClick={handleHardWay}>Yes, I like a challenge!</button>
-                      <button className={styles.btnSecondary} onClick={handleEasyWay}>No, show me the resume.</button>
-                  </div>
-              </div>
-          </div>
-      )}
 
       {/* Resume Viewer */}
       {showResume && (

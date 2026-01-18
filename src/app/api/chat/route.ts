@@ -72,8 +72,6 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // User requested "gemini-2.5 flash lite". Assuming the model ID is 'gemini-2.5-flash-lite'.
-    // If this fails, we might need to fallback to 'gemini-1.5-flash' or similar, but we obey the user first.
     const modelName = 'gemma-3-27b-it'; // Hardcoded for now based on user request
     const isGemma = modelName.includes('gemma');
 

@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.gosrijan.com"),
   title: {
     default: "Srijan Ramnani | Generative AI Engineer & Full Stack Developer",
     template: "%s | Srijan Ramnani"
